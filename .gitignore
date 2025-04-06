@@ -1,174 +1,510 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-
-# C extensions
-*.so
-
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
-cover/
-
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-.pybuilder/
-target/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# IPython
-profile_default/
-ipython_config.py
-
-# pyenv
-#   For a library or package, you might want to ignore these files since the code is
-#   intended to run in multiple environments; otherwise, check them in:
-# .python-version
-
-# pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
-#Pipfile.lock
-
-# UV
-#   Similar to Pipfile.lock, it is generally recommended to include uv.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#uv.lock
-
-# poetry
-#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
-#poetry.lock
-
-# pdm
-#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
-#pdm.lock
-#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
-#   in version control.
-#   https://pdm.fming.dev/latest/usage/project/#working-with-version-control
-.pdm.toml
-.pdm-python
-.pdm-build/
-
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
-__pypackages__/
-
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
-
-# pytype static type analyzer
-.pytype/
-
-# Cython debug symbols
-cython_debug/
-
-# PyCharm
-#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#  and can be added to the global gitignore or merged into this file.  For a more nuclear
-#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-#.idea/
-
-# Ruff stuff:
-.ruff_cache/
-
-# PyPI configuration file
-.pypirc
+import math
+import sympy as sp
+def calculadora():
+    while True:
+        operações = input('''
+                        +                     -
+                        *                     ÷
+                        Δ                  bhaskara
+                        √                     xⁿ
+                        ∝                     :
+                        %               regra de três
+                    conjuntos       expressões algébricas
+                  sistema linear             exit
+                       
+                ''').strip().lower()
+        if operações == 'exit':
+            print ('''
+                                Até mais! :)
+               
+                   ''')
+            break
+        elif operações == '+' or operações == 'soma':
+            def somar_numeros():
+                resultado = 0
+                while True:
+                    try:
+                        print(''' ''')
+                        quantidade = int(input("Quantos números você quer somar? "))
+                        if quantidade <= 0:
+                            print("Você deve somar pelo menos um número.")
+                        print(''' ''')
+                        for i in range(quantidade):
+                            número = float(input(f"Digite o {i+1}º número: "))
+                            resultado += número
+                        print(''' ''')
+                        print(f"O resultado da soma é: {resultado}")
+                        print(''' ''')
+                    except ValueError:
+                        print("Por favor, digite um número válido.")
+                        continue
+                    while True:
+                        opcao = input('''
+                                        O que você deseja fazer agora?
+                                      
+                                        C para somar com o resultado atual
+                                        N para somar com novos valores
+                                        V para voltar para a tela inicial
+                                        
+                                ''').strip().lower() 
+                        if opcao == "c":
+                            break
+                        elif opcao == "n":
+                            resultado = 0
+                            break
+                        elif opcao == "v":
+                            print(''' ''')
+                            return
+                        else:
+                            print("Opção inválida! Tente novamente.")
+                            print (''' ''')
+            somar_numeros()
+        elif operações == '-' or operações == 'subtração' or operações== 'subtraçao' or operações== 'subtracão' or operações== 'subtracao':
+            def subtrair():
+                print(''' ''')
+                while True:
+                    try:
+                        quantidade = int(input("Quantos números você quer subtrair? "))
+                        if quantidade <= 0:
+                            print("Você deve subtrair pelo menos um número.")
+                        print(''' ''')
+                        resultado = float(input("Digite o 1º número: "))
+                        for i in range(1,quantidade):
+                            número = float(input(f"Digite o {i+1}º número: "))
+                            resultado -= número
+                        print(''' ''')
+                        print(f"O resultado da subtração é: {resultado}")
+                        print(''' ''')
+                    except ValueError:
+                        print("Por favor, digite um número válido.")
+                        continue
+                    while True:
+                        opcao = input('''
+                                        O que você deseja fazer agora?
+                                      
+                                        C para subtrair com o resultado atual
+                                        N para subtrair com novos valores
+                                        V para voltar para a tela inicial
+                                        
+                                ''').strip().lower() 
+                        if opcao == "c":
+                            break
+                        elif opcao == "n":
+                            resultado = 0
+                            break
+                        elif opcao == "v":
+                            print(''' ''')
+                            return
+                        else:
+                            print("Opção inválida! Tente novamente.")
+                            print (''' ''')
+            subtrair()
+        elif operações == '*' or operações=='x' or operações=='multiplicação' or operações== 'multiplicacao' or operações == 'mutiplicacão' or operações == 'multiplicaçao':
+            def multiplicar():
+                resultado = None
+                while True:
+                    try:
+                        if resultado is None:
+                            quantidade = int(input("Quantos números você quer multiplicar? "))
+                            print(''' ''')
+                            if quantidade <= 0:
+                                print("Você deve multiplicar pelo menos um número.")
+                                continue
+                            resultado = float(input("Digite o 1º número: "))
+                            for i in range(1, quantidade):
+                                número = float(input(f"Digite o {i+1}º número: "))
+                                resultado *= número
+                        else:
+                            quantidade = int(input("Quantos números você quer multiplicar? "))
+                            if quantidade <= 0:
+                                print(''' ''')
+                                print("Você deve multiplicar pelo menos um número.")
+                                print(''' ''')
+                                continue
+                            print(''' ''')
+                            print(f"O resultado atual é: {resultado}")
+                            print(''' ''')
+                            for i in range(quantidade):
+                                número = float(input(f"Digite o {i+1}º número: "))
+                                resultado *= número
+                        print(''' ''')
+                        print(f"O resultado da multiplicação é: {resultado}")
+                        print(''' ''')
+                    except ValueError:
+                        print("Por favor, digite um número válido.")
+                        continue  
+                    while True:
+                        opcao = input('''
+                            O que você deseja fazer agora?
+                          
+                            C para multiplicar com o resultado atual
+                            N para multiplicar com novos valores
+                            V para voltar para a tela inicial
+                            
+                    ''').strip().lower() 
+                        if opcao == "c":
+                            break
+                        elif opcao == "n":
+                            resultado = None
+                            break
+                        elif opcao == "v":
+                            print(''' ''')
+                            return
+                        else:
+                            print("Opção inválida! Tente novamente.")
+                            print(''' ''')
+            multiplicar()
+        elif operações == '/' or operações=='divisão' or operações=='divisao' or operações=='÷':
+            def dividir():
+                while True:
+                    try:
+                        divisor = float(input("Digite o valor do divisor: "))
+                        if divisor == 0:
+                            print(''' ''')
+                            print("Não é possível dividir por 0.")
+                            print(''' ''')
+                            continue
+                        dividendo = float(input("Digite o valor do dividendo: "))
+                        print(''' ''')
+                        resultado = dividendo/divisor
+                        print(f"O resultado da divisão é {resultado:.2f}.")
+                        print(''' ''')
+                    except ValueError:
+                        print(''' ''')
+                        print("Por favor, digite um número válido.")
+                        print(''' ''')
+                        continue  
+                    while True:
+                        opcao = input('''
+                            O que você deseja fazer agora?
+                          
+                            N para dividir com novos valores
+                            V para voltar para a tela inicial
+                            
+                    ''').strip().lower() 
+                        if opcao == "n":
+                            break
+                        elif opcao == "v":
+                            print(''' ''')
+                            return
+                        else:
+                            print("Opção inválida! Tente novamente.")
+                            print(''' ''')
+            dividir()
+        elif operações == 'Δ' or operações == 'delta':
+            def delta():
+                while True:
+                    try:
+                        print(''' ''')
+                        a= float(input ("Digite o valor de a: "))
+                        b = float(input ("Digite o valor de b: "))
+                        c = float(input("Digite o valor de c: "))
+                        print(''' ''')
+                        delta = b**2-4*a*c
+                        print(f"Δ = {delta:,.2f}")
+                        print(''' ''')
+                    except ValueError:
+                        print(''' ''')
+                        print("Por favor, digite um número válido.")
+                        print(''' ''')
+                        continue  
+                    while True:
+                        opcao = input('''
+                            O que você deseja fazer agora?
+                          
+                            N para delta com novos valores
+                            V para voltar para a tela inicial
+                            
+                    ''').strip().lower() 
+                        if opcao == "n":
+                            break
+                        elif opcao == "v":
+                            print(''' ''')
+                            return
+                        else:
+                            print("Opção inválida! Tente novamente.")
+                            print(''' ''')
+            delta()
+        elif operações == '√' or operações== 'raiz':
+            def raiz():
+                while True:
+                    try:
+                        print(''' ''')
+                        número= float(input ("Digite o número:"))
+                        print(''' ''')
+                        if número < 0:
+                            print("Não existe raiz de número negativo. Por favor, insira outro valor.")
+                            print(''' ''')
+                            continue
+                        raiz = math.sqrt(número)
+                        print(f"a raiz de {número} é " f"{raiz:,.2f}")
+                        print(''' ''')
+                    except ValueError:
+                        print(''' ''')
+                        print("Por favor, digite um número válido.")
+                        print(''' ''')
+                        continue  
+                    while True:
+                        opcao = input('''
+                                O que você deseja fazer agora?
+                          
+                                N para a raiz de um novo valor
+                                V para voltar para a tela inicial
+                            
+                        ''').strip().lower() 
+                        if opcao == "n":
+                            break
+                        elif opcao == "v":
+                            print(''' ''')
+                            return
+                        else:
+                            print("Opção inválida! Tente novamente.")
+                            print(''' ''')
+            raiz()
+        elif operações == 'bhaskara' or operações=='bascara' or operações=='baskara':
+            def bhaskara():
+                while True:
+                    try:
+                        print(''' ''')
+                        a= float(input ("Digite o valor de a: "))
+                        b = float(input ("Digite o valor de b: "))
+                        c = float(input("Digite o valor de c: "))
+                        print(''' ''')
+                        delta = b**2-4*a*c
+                        if delta == 0:
+                            x1 = -b + math.sqrt(delta)
+                            x2 = x1
+                            print(f"Δ = {delta:,.2f}")
+                            print(f"x1 = {x1:,.2f}", f"e x2 = {x2:,.2f}")
+                            print(''' ''')
+                        elif delta < 0:
+                            print(f"Não tem raízes reais porque delta é negativo: {delta:.2f}")
+                            print(''' ''')
+                        else:
+                            print(f"Δ = {delta:,.2f}")
+                            x1 = (-b + math.sqrt(delta))/(2*a)
+                            x2 = (-b - math.sqrt(delta))/(2*a)  
+                            print(f"x1 = {x1:,.2f}", f"e x2 = {x2:,.2f}")
+                            print(''' ''')
+                    except ValueError:
+                        print(''' ''')
+                        print("Por favor, digite um número válido.")
+                        print(''' ''')
+                        continue  
+                    while True:
+                        opcao = input('''
+                            O que você deseja fazer agora?
+                          
+                            N para bhaskara com novos valores
+                            V para voltar para a tela inicial
+                            
+                    ''').strip().lower() 
+                        if opcao == "n":
+                            break
+                        elif opcao == "v":
+                            print(''' ''')
+                            return
+                        else:
+                            print("Opção inválida! Tente novamente.")
+                            print(''' ''')
+            bhaskara()
+        elif operações == '∝' or operações=='proporção' or operações=='proporcao' or operações=='proporçao' or operações=='proporcão':
+            def proporcao():
+                while True:
+                    try:
+                        print(''' ''')
+                        a= float(input ("Digite o valor de a: "))
+                        b = float(input ("Digite o valor de b: "))
+                        c = float(input("Digite o valor de c: "))
+                        d = float(input('''Digite o valor de d: '''))
+                        print(''' ''')
+                        if a == 0 or b == 0 or c == 0 or d == 0:
+                            print("Os números devem ser diferentes de 0.")
+                            print(''' ''')
+                            continue
+                        print(f"{a} ÷ {b} = " f"{c} ÷ {d}")
+                        proporção1 = a*d
+                        proporção2 = b*c
+                        print(f'''{a} x {d} = {b} x {c}
+{proporção1:.2f} = {proporção2:.2f} ''')
+                        print(''' ''')
+                    except ValueError:
+                        print("Por favor, digite um número válido.")
+                        continue  
+                    while True:
+                        opcao = input('''
+                            O que você deseja fazer agora?
+                          
+                            N para proporção com novos valores
+                            V para voltar para a tela inicial
+                            
+                    ''').strip().lower() 
+                        if opcao == "n":
+                            break
+                        elif opcao == "v":
+                            print(''' ''')
+                            return
+                        else:
+                            print("Opção inválida! Tente novamente.")
+                            print(''' ''')
+            proporcao()
+        elif operações == 'razão' or operações == 'razao' or operações==':':
+            def razao():
+                while True:
+                    try:
+                        print(''' ''')
+                        divisor= float(input ("Digite o valor do divisor: "))
+                        if divisor == 0:
+                            print(''' ''')
+                            print("O divisor deve ser diferente de 0.")
+                            print(''' ''')
+                            continue
+                        dividendo = float(input ("Digite o valor do dividendo: "))
+                        print(''' ''')
+                        razão = dividendo/divisor
+                        print(f"razão = {razão:,.4f} ou {razão*100:,.2f}%")
+                        print(''' ''')
+                    except ValueError:
+                        print("Por favor, digite um número válido.")
+                        continue  
+                    while True:
+                        opcao = input('''
+                            O que você deseja fazer agora?
+                          
+                            N para razão com novos valores
+                            V para voltar para a tela inicial
+                            
+                    ''').strip().lower() 
+                        if opcao == "n":
+                            break
+                        elif opcao == "v":
+                            print(''' ''')
+                            return
+                        else:
+                            print("Opção inválida! Tente novamente.")
+                            print(''' ''')
+            razao()
+        elif operações == '%' or operações == 'porcentagem':
+            def porcentagem():
+                while True:
+                    try:
+                        print(''' ''')
+                        número = float(input("Digite o número: "))
+                        porcentagem = float(input("Digite o valor da porcentagem que quer calcular: "))
+                        resultado = (porcentagem/100)*número
+                        print(''' ''')
+                        print(f"{porcentagem}% de {número} é {resultado:.2f}")
+                        print(''' ''')
+                    except ValueError:
+                        print("Por favor, digite um número válido.")
+                        continue  
+                    while True:
+                        opcao = input('''
+                            O que você deseja fazer agora?
+                          
+                            N para porcentagem com novos valores
+                            V para voltar para a tela inicial
+                            
+                    ''').strip().lower() 
+                        if opcao == "n":
+                            break
+                        elif opcao == "v":
+                            print(''' ''')
+                            return
+                        else:
+                            print("Opção inválida! Tente novamente.")
+                            print(''' ''')
+            porcentagem()
+        elif operações == 'regra de três' or operações == 'regra de tres':
+            def regra_de_tres():
+                while True:
+                    try:
+                        print(''' ''')
+                        print('''           Escolha entre regra de três simples direta,
+                inversa ou regra de três composta.''')
+                        escolha=(input('''
+                            1. a / b | c / x (direta)
+                            2. a / x | b / c (inversa)
+                            3. a / x | (b / c) * (d / e) (composta)
+                        Digite o número da operação: ''')).strip()
+                        print(''' ''')
+                        if escolha == "1":
+                            a = float(input('Digite o valor de a: '))
+                            b = float(input('Digite o valor de b: '))
+                            c = float(input('Digite o valor de c: '))
+                            resultado = (b*c)/a
+                            print(''' ''')
+                            print(f'O valor de X é {round(resultado, 2)}')
+                            print(''' ''')
+                        elif escolha == "2":
+                            print(''' ''')
+                            a = float(input('Digite o valor de a: '))
+                            b = float(input('Digite o valor de b: '))                                                                           
+                            c = float(input('Digite o valor de c: '))
+                            resultado = (a * c) / b
+                            print(''' ''')
+                            print(f'O valor de X é {round(resultado, 2)}')
+                            print(''' ''')
+                        elif escolha == "3":
+                            print(''' ''')
+                            a = float(input('Digite o valor de a: '))
+                            b = float(input('Digite o valor de b: '))
+                            c = float(input('Digite o valor de c: '))
+                            d = float(input('Digite o valor de d: '))
+                            e = float(input('Digite o valor de e: '))
+                            print(''' ''')
+                            resultado = (a*c*e)/(b*d)
+                            print(f'O valor de X é {round(resultado, 2)}')
+                            print(''' ''')
+                        else:
+                            print(''' ''')
+                            print("Opção inválida.")
+                            print(''' ''')
+                    except ValueError:
+                        print(''' ''')
+                        print("Digite um numero valido!")
+                        print(''' ''')
+                    while True:
+                        opcao = input('''
+                            O que você deseja fazer agora?
+                          
+                            N para regra de três com novos valores
+                            V para voltar para a tela inicial
+        
+                    ''').strip().lower() 
+                        if opcao == "n":
+                            break
+                        elif opcao == "v":
+                            print(''' ''')
+                            return
+                        else:
+                            print("Opção inválida! Tente novamente.")
+                            print(''' ''')
+            regra_de_tres()
+        elif operações=='sistema linear':
+            def sistema_linear():
+                x,y = sp.symbols( 'x y')
+                eq1 = sp.Eq(2*x + 3*y, 6)
+                eq2 = sp.Eq(x - y, 2)
+                solucao = sp.solve((eq1, eq2), (x,y))
+                print("Resultado Sistema Linear 1:", solucao)
+                eq1 = sp.Eq(x + y, 35)
+                eq2 = sp.Eq(2*x + 4*y, 94)
+                solucao = sp.solve((eq1, eq2), (x,y))
+                print("Resultado Sistema Linear 2:", solucao)
+                eq1 = sp.Eq(10*x + 5*y, 300)
+                eq2 = sp.Eq(x + y, 40)
+                solucao = sp.solve((eq1, eq2), (x,y))
+                print("Resultado Sistema Linear 3:", solucao)
+                eq1 = sp.Eq(x + y, 40)
+                eq2 = sp.Eq(x - y, 8)
+                solucao = sp.solve((eq1, eq2), (x,y))
+                print("Resultado Sistema Linear 4:",solucao)
+            sistema_linear()
+        elif operações == 'expressoes algebricas' or operações == 'expressões algébricas':
+            
+        else:
+            print(''' ''')
+            print('''                           Operação inválida.''')
+            print(''' ''')
+calculadora()

@@ -540,16 +540,16 @@ def calculadora():
                         print(''' ''')
                         for i in range(num_x):
                             coef_x = float(input(f"Coeficiente para o termo x{str(i+1)}: "))
-                        expressao += coef_x * x
+                            expressao += coef_x * x
                         for i in range(num_y):
                             coef_y = float(input(f"Coeficiente para o termo y{str(i+1)}: "))
-                        expressao += coef_y * y
+                            expressao += coef_y * y
                         for i in range(num_xy):
                             coef_xy = float(input(f"Coeficiente para o termo xy{str(i+1)}: "))
-                        expressao += coef_xy * x * y
+                            expressao += coef_xy * x * y
                         for i in range(num_constantes):
                             constante = float(input(f"Valor constante {str(i+1)}: "))
-                        expressao += constante
+                            expressao += constante
                         expressao_simplificada = simplify(expressao)
                         print(''' ''')
                         print(f"A expressão algébrica simplificada é: {expressao_simplificada}")
@@ -605,6 +605,49 @@ def calculadora():
                             print("Opção inválida! Tente novamente.")
                             print(''' ''')
             expressoes_algebricas()
+        elif operações=='conjuntos':
+            def operacoes_conjuntos():
+                while True:
+                    print(''' ''')
+                    num_conjuntos = int(input("Quantos conjuntos você deseja usar? "))
+                    print(''' ''')
+                    conjuntos = []
+                    for i in range(num_conjuntos):
+                        print(''' ''')
+                        valores = input(f"Digite os valores do conjunto {i+1} separados por espaço: ").split()
+                        conjuntos.append(set(valores))
+                    print(''' ''')
+                    uniao = set()
+                    for conjunto in conjuntos:
+                        uniao = uniao.union(conjunto)
+                    intersecao = conjuntos[0]
+                    for conjunto in conjuntos[1:]:
+                        intersecao = intersecao.intersection(conjunto)
+                    diferenca = conjuntos[0]
+                    for conjunto in conjuntos[1:]:
+                        diferenca = diferenca.difference(conjunto)   
+                    print(''' ''')
+                    print(f"União: {uniao}")
+                    print(f"Interseção: {intersecao}")
+                    print(f"Diferença: {diferenca}")
+                    print(''' ''')
+                    while True:
+                        opcao = input('''
+                            O que você deseja fazer agora?
+                          
+                            N para expressão algébrica com novos valores
+                            V para voltar para a tela inicial
+        
+                    ''').strip().lower() 
+                        if opcao == "n":
+                            break
+                        elif opcao == "v":
+                            print(''' ''')
+                            return
+                        else:
+                            print("Opção inválida! Tente novamente.")
+                            print(''' ''')
+            operacoes_conjuntos()            
         else:
             print(''' ''')
             print('''                           Operação inválida.''')

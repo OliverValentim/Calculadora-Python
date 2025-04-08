@@ -21,18 +21,33 @@ def calculadora():
                    ''')
             break
         elif operações == '+' or operações == 'soma':
-            def somar_numeros():
-                resultado = 0
+            def somar():
+                resultado = None
                 while True:
                     try:
-                        print(''' ''')
-                        quantidade = int(input("Quantos números você quer somar? "))
-                        if quantidade <= 0:
-                            print("Você deve somar pelo menos um número.")
-                        print(''' ''')
-                        for i in range(quantidade):
-                            número = float(input(f"Digite o {i+1}º número: "))
-                            resultado += número
+                        if resultado is None:
+                            quantidade = int(input("Quantos números você quer somar? "))
+                            print(''' ''')
+                            if quantidade <= 0:
+                                print("Você deve somar pelo menos um número.")
+                                continue
+                            resultado = float(input("Digite o 1º número: "))
+                            for i in range(1, quantidade):
+                                número = float(input(f"Digite o {i+1}º número: "))
+                                resultado += número
+                        else:
+                            quantidade = int(input("Quantos números você quer somar? "))
+                            if quantidade <= 0:
+                                print(''' ''')
+                                print("Você deve somar pelo menos um número.")
+                                print(''' ''')
+                                continue
+                            print(''' ''')
+                            print(f"O resultado atual é: {resultado}")
+                            print(''' ''')
+                            for i in range(quantidade):
+                                número = float(input(f"Digite o {i+1}º número: "))
+                                resultado += número
                         print(''' ''')
                         print(f"O resultado da soma é: {resultado}")
                         print(''' ''')
@@ -59,20 +74,35 @@ def calculadora():
                         else:
                             print("Opção inválida! Tente novamente.")
                             print (''' ''')
-            somar_numeros()
+            somar()
         elif operações == '-' or operações == 'subtração' or operações== 'subtraçao' or operações== 'subtracão' or operações== 'subtracao':
             def subtrair():
-                print(''' ''')
+                resultado = None
                 while True:
                     try:
-                        quantidade = int(input("Quantos números você quer subtrair? "))
-                        if quantidade <= 0:
-                            print("Você deve subtrair pelo menos um número.")
-                        print(''' ''')
-                        resultado = float(input("Digite o 1º número: "))
-                        for i in range(1,quantidade):
-                            número = float(input(f"Digite o {i+1}º número: "))
-                            resultado -= número
+                        if resultado is None:
+                            quantidade = int(input("Quantos números você quer subtrair? "))
+                            print(''' ''')
+                            if quantidade <= 0:
+                                print("Você deve subtrair pelo menos um número.")
+                                continue
+                            resultado = float(input("Digite o 1º número: "))
+                            for i in range(1, quantidade):
+                                número = float(input(f"Digite o {i+1}º número: "))
+                                resultado -= número
+                        else:
+                            quantidade = int(input("Quantos números você quer subtrair? "))
+                            if quantidade <= 0:
+                                print(''' ''')
+                                print("Você deve subtrair pelo menos um número.")
+                                print(''' ''')
+                                continue
+                            print(''' ''')
+                            print(f"O resultado atual é: {resultado}")
+                            print(''' ''')
+                            for i in range(quantidade):
+                                número = float(input(f"Digite o {i+1}º número: "))
+                                resultado -= número
                         print(''' ''')
                         print(f"O resultado da subtração é: {resultado}")
                         print(''' ''')
@@ -502,25 +532,32 @@ def calculadora():
                             print("Opção inválida! Tente novamente.")
                             print(''' ''')
             regra_de_tres()
-        elif operações=='sistema linear' or operações=='sistema' or operações=='linear':
+        elif operações == 'sistema linear' or operações == 'sistema' or operações == 'linear':
+            import sympy as sp
             def sistema_linear():
-                x,y = sp.symbols( 'x y')
-                eq1 = sp.Eq(2*x + 3*y, 6)
-                eq2 = sp.Eq(x - y, 2)
-                solucao = sp.solve((eq1, eq2), (x,y))
-                print("Resultado Sistema Linear 1:", solucao)
-                eq1 = sp.Eq(x + y, 35)
-                eq2 = sp.Eq(2*x + 4*y, 94)
-                solucao = sp.solve((eq1, eq2), (x,y))
-                print("Resultado Sistema Linear 2:", solucao)
-                eq1 = sp.Eq(10*x + 5*y, 300)
-                eq2 = sp.Eq(x + y, 40)
-                solucao = sp.solve((eq1, eq2), (x,y))
-                print("Resultado Sistema Linear 3:", solucao)
-                eq1 = sp.Eq(x + y, 40)
-                eq2 = sp.Eq(x - y, 8)
-                solucao = sp.solve((eq1, eq2), (x,y))
-                print("Resultado Sistema Linear 4:",solucao)
+               x, y = sp.symbols('x y')
+               try:
+                   print(''' ''')
+                   print("Digite os coeficientes e constantes da equação na forma: ax + by = c")
+                   print(''' ''')
+                   a1 = float(input("a1 (coef. x na 1ª equação): "))
+                   b1 = float(input("b1 (coef. y na 1ª equação): "))
+                   c1 = float(input("c1 (constante da 1ª equação): "))
+                   print(''' ''')
+                   a2 = float(input("a2 (coef. x na 2ª equação): "))
+                   b2 = float(input("b2 (coef. y na 2ª equação): "))
+                   c2 = float(input("c2 (constante da 2ª equação): "))
+                   print(''' ''')
+                   eq1 = sp.Eq(a1*x + b1*y, c1)
+                   eq2 = sp.Eq(a2*x + b2*y, c2)
+                   solucao = sp.solve((eq1, eq2), (x, y))
+                   print("Resultado do sistema:")
+                   print(''' ''')
+                   print(f"x = {solucao[x]}")
+                   print(f"y = {solucao[y]}")
+                   print(''' ''')
+               except Exception as e:
+                   print("Erro ao resolver o sistema:", e)                  
             sistema_linear()
         elif operações == 'expressoes algebricas' or operações == 'expressões algébricas' or operações == 'expressões' or operações == 'expressoes' or operações == 'algebricas' or operações=='algébricas':
             def expressoes_algebricas():

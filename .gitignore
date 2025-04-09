@@ -11,7 +11,8 @@ def calculadora():
                         ∝                     :
                         %               regra de três
                     conjuntos       expressões algébricas
-                  sistema linear             exit
+                  sistema linear             **
+                                exit
                        
                 ''').strip().lower()
         if operações == 'exit':
@@ -292,6 +293,38 @@ def calculadora():
                             print("Opção inválida! Tente novamente.")
                             print(''' ''')
             raiz()
+        elif operações == '**' or operações== 'potência' or operações == 'potencia':
+            def potencia():
+                while True:
+                    try:
+                        print(''' ''')
+                        número= float(input ("Digite o número da base: "))
+                        potencia=float(input("Digite a potência: "))
+                        resultado = número**potencia
+                        print(f"O resultado é {resultado:.2f}")
+                        print(''' ''')
+                    except ValueError:
+                        print(''' ''')
+                        print("Por favor, digite um número válido.")
+                        print(''' ''')
+                        continue  
+                    while True:
+                        opcao = input('''
+                                O que você deseja fazer agora?
+                          
+                                N para potência com novos valores
+                                V para voltar para a tela inicial
+                            
+                        ''').strip().lower() 
+                        if opcao == "n":
+                            break
+                        elif opcao == "v":
+                            print(''' ''')
+                            return
+                        else:
+                            print("Opção inválida! Tente novamente.")
+                            print(''' ''')
+            potencia()
         elif operações == 'bhaskara' or operações=='bascara' or operações=='baskara':
             def bhaskara():
                 while True:
@@ -552,9 +585,8 @@ def calculadora():
                    eq2 = sp.Eq(a2*x + b2*y, c2)
                    solucao = sp.solve((eq1, eq2), (x, y))
                    print("Resultado do sistema:")
-                   print(''' ''')
-                   print(f"x = {solucao[x]}")
-                   print(f"y = {solucao[y]}")
+                   print(f"x = {solucao[x]:.2f}")
+                   print(f"y = {solucao[y]:.2f}")
                    print(''' ''')
                except Exception as e:
                    print("Erro ao resolver o sistema:", e)                  
